@@ -1,0 +1,11 @@
+services:
+  db:
+    image: mariadb:10.11.2 #imagen que descargamos
+    volumes:
+      - db_data_prestashop:/var/lib/mysql #montamos el sistema de ficheros en donde se guardan las bases de datos
+    restart: no #ponemos que no por si la liamos en la instalación
+    environment: #variables de entorno del servicio
+      MYSQL_ROOT_PASSWORD: 123456789
+      MYSQL_DATABASE: prestashop
+      MYSQL_USER: prestashop_user
+      MYSQL_PASSWORD: 123456789
