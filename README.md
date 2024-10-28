@@ -148,3 +148,87 @@ aquí declaramos el volumen que va a ser usado por los servicios. Importante dec
     #prestashop_network:
 Mismo ejemplo para la red, declarada fuera de los servicios ya que va a ser usada por los 2 mencionados anteriormente
 ```
+
+# 4.  arrancar prestashop y comprobar que funciona
+
+```bash
+#Nos posicionamos dentro de la carpeta del docker-compose.yml y ejecutamos
+sudo docker compose up -d
+```
+Si todo ha ido bien, debería de salir algo así :relaxed:
+![todo ok maquina.png](..%2F..%2F..%2FprestashopImagenes%2Ftodo%20ok%20maquina.png)
+
+```bash
+#acceder a prestashop desde el navegador
+http://192.168.1.46:9800
+```
+Debería de salir esto, seleccionamos idioma y seguimos :relaxed:
+![instalacionPrestashop.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop.png)
+
+```bash
+#Aceptamos acuerdos de licencia
+```
+![instalacionPrestashop2.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop2.png)
+
+```bash
+#introducción de credenciales, nombre de tienda, correo, contraseña... etc
+```
+![instalacionPrestashop3.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop3.png)
+
+```bash
+#instalamos módulos o no, según queramos personalizar nuestra tienda
+```
+![instalacionPrestashop4.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop4.png)
+
+
+```bash
+#establecemos la conexión con la base de datos. IMPORTANTE
+direccion de servidor de la base de datos: mismo nombre que le pusisteis en el docker-compose. El puerto podeís dejar el de por defecto
+#Resto de credenciales
+las mismas que pusisteis en el docker-compose, si no dará error, a no ser que creeis una desde cero otra vez
+```
+Si todo ha ido bien, saldrá esto :smile:
+![instalacionPrestashop7.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop7.png)
+
+```bash
+#Esperamos a que se instale el servicio
+```
+![instalacionPrestashop8.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop8.png)
+
+```bash
+#Una vez ha acabado, aparecerá esto
+```
+![instalacionPrestashop9.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop9.png)
+
+## IMPORTANTE :scream:
+**No hemos acabado todo, queda algo muy importante, ya que si no no nos dejan acceder a la tienda**
+
+```bash
+#eliminar la carpeta install
+docker exec -it <nombre_o_id_del_contenedor_prestashop> rm -rf /var/www/html/install
+```
+
+
+```bash
+#renombrar por seguridad la carpeta admin de dentro del contenedor donde está ejecutandose prestashop
+docker exec -it <nombre_o_id_del_contenedor_prestashop> mv /var/www/html/admin /var/www/html/admin896sjdin1230jdndi
+```
+
+
+```bash
+#Una vez hecho esto, introducimos esto
+http://192.168.1.46/admin896sjdin1230jdndi
+
+#Como veis, accedemos con el mismo admin el cual cambiamos en la carpeta de dentro del contenedor donde tenemos prestashop
+```
+Debería de salir esto :relaxed:
+![instalacionPrestashop11.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop11.png)
+
+```bash
+#introducimos el correo y contraseña que pusimos en la instalación y accedemos a la tienda
+```
+
+![instalacionPrestashop12.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop12.png)
+
+
+### SI HAS SEGUIDO LA GUÍA AL PIE DE LA LETRA DEBERÍA DE HABER FUNCIONADO TODO, ASÍ QUE ENHORABUENA, YA HAS INSTALADO PRESTASHOP, AHORA PUEDES INTERACTURAR COMO VEAS :heart_eyes:
