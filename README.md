@@ -111,18 +111,18 @@ Esto quiere decir que prestashop va a depender de mariadb para funcionar, sin el
 
 ```bash
 #image: prestashop/prestashop:latest
-se va a descargar la ultima imagen de prestashop, indicado mediante el tag latest
+se va a descargar la última imagen de prestashop, indicado mediante el tag latest
 ```
 
 ```bash
 #ports:
      # - "9800:80"
-vamos a mapear el puerto 9800 con el puerto 80 de la maquina, de manera que al acceder desde fuera, la conexion pasara por el puerto de la maquina virtual y podremos acceder a prestashop
+vamos a mapear el puerto 9800 con el puerto 80 de la maquina, de manera que al acceder desde fuera, la conexión pasará por el puerto de la máquina virtual y podremos acceder a prestashop
 ```
 
 ```bash
 #restart: no
-esto es para indicar que hace el servidor en caso de fallo, puse que no por si la instalacion salía mal, pero puedes poner always por ejemplo si quieres que siempre esté activo
+esto es para indicar que hace el servidor en caso de fallo, puse que no por si la instalación salía mal, pero puedes poner always por ejemplo si quieres que siempre esté activo
 ```
 
 ```bash
@@ -156,55 +156,64 @@ Mismo ejemplo para la red, declarada fuera de los servicios ya que va a ser usad
 sudo docker compose up -d
 ```
 Si todo ha ido bien, debería de salir algo así :relaxed:
-![todo ok maquina.png](..%2F..%2F..%2FprestashopImagenes%2Ftodo%20ok%20maquina.png)
+![todo ok maquina](https://github.com/user-attachments/assets/ec706457-07bf-4616-aecd-48f44a263691)
+
 
 ```bash
 #acceder a prestashop desde el navegador
 http://192.168.1.46:9800
 ```
 Debería de salir esto, seleccionamos idioma y seguimos :relaxed:
-![instalacionPrestashop.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop.png)
+![instalacionPrestashop](https://github.com/user-attachments/assets/07f78a69-95ec-4e53-8a85-46d6d75de87d)
+
 
 ```bash
 #Aceptamos acuerdos de licencia
 ```
-![instalacionPrestashop2.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop2.png)
+![instalacionPrestashop2](https://github.com/user-attachments/assets/7d569cd6-b8e2-4477-bd4b-a56b03654be2)
+
 
 ```bash
 #introducción de credenciales, nombre de tienda, correo, contraseña... etc
 ```
-![instalacionPrestashop3.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop3.png)
+![instalacionPrestashop3](https://github.com/user-attachments/assets/c24348c2-3c51-4de9-985f-0f772f11ffa9)
+
 
 ```bash
 #instalamos módulos o no, según queramos personalizar nuestra tienda
 ```
-![instalacionPrestashop4.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop4.png)
+![instalacionPrestashop4](https://github.com/user-attachments/assets/a7a0a301-2f22-41a7-85f0-6686827f3802)
+
 
 
 ```bash
 #establecemos la conexión con la base de datos. IMPORTANTE
-direccion de servidor de la base de datos: mismo nombre que le pusisteis en el docker-compose. El puerto podeís dejar el de por defecto
+dirección de servidor de la base de datos: mismo nombre que le pusisteis en el docker-compose. El puerto podeís dejar el de por defecto
 #Resto de credenciales
 las mismas que pusisteis en el docker-compose, si no dará error, a no ser que creeis una desde cero otra vez
 ```
 Si todo ha ido bien, saldrá esto :smile:
-![instalacionPrestashop7.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop7.png)
+
+![instalacionPrestashop7](https://github.com/user-attachments/assets/a0cf58d3-eccf-4bff-a943-92c13b01ca77)
+
 
 ```bash
 #Esperamos a que se instale el servicio
 ```
-![instalacionPrestashop8.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop8.png)
+![instalacionPrestashop8](https://github.com/user-attachments/assets/dbb83aff-ff45-4346-8cf0-b2092933f815)
+
 
 ```bash
 #Una vez ha acabado, aparecerá esto
 ```
-![instalacionPrestashop9.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop9.png)
+![instalacionPrestashop9](https://github.com/user-attachments/assets/84fce41a-9ea9-45f7-9fd6-74403b590a58)
+
 
 ## IMPORTANTE :scream:
 **No hemos acabado todo, queda algo muy importante, ya que si no no nos dejan acceder a la tienda**
 
 ```bash
-#eliminar la carpeta install
+#eliminar la carpeta install donde está el contenedor ejecutándose de prestashop
 docker exec -it <nombre_o_id_del_contenedor_prestashop> rm -rf /var/www/html/install
 ```
 
@@ -222,13 +231,15 @@ http://192.168.1.46/admin896sjdin1230jdndi
 #Como veis, accedemos con el mismo admin el cual cambiamos en la carpeta de dentro del contenedor donde tenemos prestashop
 ```
 Debería de salir esto :relaxed:
-![instalacionPrestashop11.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop11.png)
+![instalacionPrestashop11](https://github.com/user-attachments/assets/2e662148-0a85-44a8-a0db-0e184af2a9b1)
+
 
 ```bash
 #introducimos el correo y contraseña que pusimos en la instalación y accedemos a la tienda
 ```
+![instalacionPrestashop12](https://github.com/user-attachments/assets/88082fff-00f6-4382-88bd-9722fa35aaaa)
 
-![instalacionPrestashop12.png](..%2F..%2F..%2FprestashopImagenes%2FinstalacionPrestashop12.png)
+
 
 
 ### SI HAS SEGUIDO LA GUÍA AL PIE DE LA LETRA DEBERÍA DE HABER FUNCIONADO TODO, ASÍ QUE ENHORABUENA, YA HAS INSTALADO PRESTASHOP, AHORA PUEDES INTERACTURAR COMO VEAS :heart_eyes:
